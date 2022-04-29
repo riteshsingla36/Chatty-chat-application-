@@ -1,2 +1,2 @@
-const address = "http://localhost:8000"
+const address = "https://chatty-chat-app1.herokuapp.com"
 export default address
