@@ -27,7 +27,10 @@ const SetImage = () => {
       toast.error("Please Select an avatar", toastOptions);
     } else {
       const user = await JSON.parse(localStorage.getItem("chat-app-user"));
-      const { data } = await axios.patch(`${address}/user/setimage/${user._id}`, {avatar: avatars[selectedAvatar]});
+      const { data } = await axios.patch(
+        `${address}/user/setimage/${user._id}`,
+        { avatar: avatars[selectedAvatar] }
+      );
       if (data.isSet) {
         localStorage.setItem("chat-app-user", JSON.stringify(data.user));
         navigate("/");
@@ -50,7 +53,6 @@ const SetImage = () => {
       const buffer = new Buffer(image.data);
       data.push(buffer.toString("base64"));
     }
-    console.log(data);
     setAvatars(data);
     setIsLoading(false);
   }
