@@ -3,6 +3,21 @@ const bcrypt = require("bcrypt")
 const User = require("../Models/userModel")
 const router = require("express").Router()
 
+router.get("/allusers/:id", async (req, res) => {
+    try {
+        const users = await User.find({ _id: { $ne: req.params.id } }).select([
+            "email",
+            "username",
+            "image",
+            "_id",
+        ])
+        return res.json(users)
+    }
+    catch (error) {
+        return res.json({ msg: error.message })
+    }
+})
+
 router.post("/signup", async (req, res) => {
     try {
         const { username, email, password } = req.body
@@ -54,10 +69,10 @@ router.post("/login", async (req, res) => {
 })
 
 router.patch("/setimage/:id", async (req, res) => {
-    const {avatar} = req.body
+    const { avatar } = req.body
     try {
-        const user = await User.findByIdAndUpdate(req.params.id, {isImageSet:true, image: avatar}, {new:true})
-        return res.json({isSet: user.isImageSet, user})
+        const user = await User.findByIdAndUpdate(req.params.id, { isImageSet: true, image: avatar }, { new: true })
+        return res.json({ isSet: user.isImageSet, user })
 
 
     }
