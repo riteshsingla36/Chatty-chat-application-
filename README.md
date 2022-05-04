@@ -20,7 +20,7 @@ It's a one to one chatting app.<br/>
 <li>User can select an avatar as his profile pic.</li>
   <li>User can live chat with the other users of the app.</li>
   <li>On every new message chat screen scroll down to bottom.</li>
-  <li>User can run the app even in mobile</li>
+<!--   <li>User can run the app even in mobile</li> -->
 </ul>
 
 <h2>Quick view of the project:</h2>
